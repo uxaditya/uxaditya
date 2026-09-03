@@ -4,11 +4,21 @@ A static, dependency-free tourism website: dark cinematic layout, condensed disp
 typography, and **scenery that the repository generates itself** rather than
 hotlinking stock photography.
 
-Open `index.html` in a browser, or serve the folder:
+Open `index.html` straight off disk, or run a local server:
 
 ```bash
+npm install && npm start      # http://localhost:3000
+# or, with nothing installed:
 python3 -m http.server 8000
 ```
+
+`npm start` is a convenience only — the site itself has no build step and no
+runtime dependencies. `serve.json` turns off `serve`'s clean-URL rewriting,
+because that issues a 301 which **drops the query string** and would break the
+`?slug=` and `?tag=` deep links.
+
+Other scripts: `npm run art` regenerates the scenery, `npm run art:list` prints
+the scene manifest, `npm run fonts` re-vendors the webfonts.
 
 ## Pages
 
@@ -31,6 +41,7 @@ assets/img/*.svg                             generated scenery
 assets/fonts/*.woff2                         self-hosted Anton / Barlow Condensed / Inter
 tools/gen_art.py                             the scenery generator
 tools/get_fonts.py                           re-vendors the webfonts
+package.json serve.json                      optional local dev server
 ```
 
 `assets/js/tours.js` drives every grid, the search index, the departure mega menu and
