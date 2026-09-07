@@ -43,6 +43,7 @@ assets/fonts/*.woff2                         self-hosted Anton / Barlow Condense
 tools/gen_art.py                             the scenery generator
 tools/get_fonts.py                           re-vendors the webfonts
 package.json serve.json                      optional local dev server
+tools/build_preview.py                       bundles all four pages into one file
 ```
 
 `assets/js/tours.js` drives every grid, the search index, the departure mega menu and
@@ -70,6 +71,20 @@ nothing depends on it being generated. Drop your own files into `assets/img/`, p
 the `img`, `gallery` and `hero` fields in `assets/js/tours.js` at them, and update the
 `src` attributes in the four HTML pages. Portrait cards want roughly 3:4, heroes and
 banners want something wide.
+
+## Single-file build
+
+Where only one file can be hosted or shared, `tools/build_preview.py` bundles the
+whole site into a self-contained HTML document — stylesheets, scripts, webfonts as
+base64 and every scene as a data URI, with page navigation rewritten to client-side
+routing over `?page=`, so internal links, `?slug=` detail pages and `?tag=` filters
+all still work.
+
+```bash
+python3 tools/build_preview.py        # dist/andamana.html, ~2 MB
+```
+
+The multi-page site is the source of truth; `dist/` is derived and git-ignored.
 
 ## Behaviour
 

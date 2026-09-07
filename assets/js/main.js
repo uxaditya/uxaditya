@@ -594,6 +594,16 @@
     reveals(); parallax(); counters(); spotlight();
   }
 
+  // Exposed so a single-file build (tools/build_preview.py) can re-initialise
+  // the DOM-scoped modules after swapping one view for another. The page-level
+  // modules — nav, search, lightbox, forms — bind to document once and stay.
+  window.ANDAMANA = {
+    remount: function () {
+      grids(); filters(); hero(); marquee(); quotes(); detail();
+      reveals(); parallax(); counters();
+    }
+  };
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);
   } else {
