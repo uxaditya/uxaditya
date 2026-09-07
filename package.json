@@ -5,6 +5,7 @@
   "description": "Static tourism site for Andamana island tours, with procedurally generated scenery.",
   "scripts": {
     "start": "serve --listen 3000 --no-clipboard .",
+    "server": "serve --listen 3000 --no-clipboard .",
     "dev": "serve --listen 3000 --no-clipboard .",
     "art": "python3 tools/gen_art.py",
     "art:list": "python3 tools/gen_art.py --list",

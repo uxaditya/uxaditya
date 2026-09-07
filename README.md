@@ -17,8 +17,9 @@ runtime dependencies. `serve.json` turns off `serve`'s clean-URL rewriting,
 because that issues a 301 which **drops the query string** and would break the
 `?slug=` and `?tag=` deep links.
 
-Other scripts: `npm run art` regenerates the scenery, `npm run art:list` prints
-the scene manifest, `npm run fonts` re-vendors the webfonts.
+`npm run server` and `npm run dev` are aliases of `npm start`. Other scripts:
+`npm run art` regenerates the scenery, `npm run art:list` prints the scene
+manifest, `npm run fonts` re-vendors the webfonts.
 
 ## Pages
 
